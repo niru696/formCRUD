@@ -1,0 +1,102 @@
+
+<app-navbar></app-navbar>
+<!-- <div class="button-row">
+    <a mat-raised-button color="primary" style="margin-top: 2%; margin-left: 10%; " [routerLink]="['/details']"><mat-icon>list</mat-icon></a>
+  </div> -->
+  <mat-card class=" mat-elevation-z8" style="margin-top: 1%; width: 40%; margin-left: 25%;">
+  <h3 style="text-align: center; ">Edit the {{contact}} details</h3>
+</mat-card>
+<mat-card class=" mat-elevation-z8" style="width:40%; margin-left: 25%; margin-bottom: 10%;
+ margin-top: 2%;">
+  <div class="container">
+   <div class="row">
+     
+    <form [formGroup]="bookForm" style="margin-left: 10%" (ngSubmit)="onFormSubmit(bookForm.value)">
+        
+      <mat-form-field class="example-full-width">
+        <input matInput placeholder="First Name" formControlName="firstname"
+               [errorStateMatcher]="matcher" required>
+        <mat-error>
+          <span *ngIf="!bookForm.get('firstname').valid && bookForm.get('firstname').touched">Please enter First Name</span>
+        </mat-error>
+      </mat-form-field>
+       &nbsp; &nbsp;      &nbsp;                        
+      <mat-form-field class="example-full-width">
+        <input matInput placeholder="Last Name" formControlName="lastname"
+               [errorStateMatcher]="matcher" required>
+        <mat-error>
+          <span *ngIf="!bookForm.get('lastname').valid && bookForm.get('lastname').touched">Please enter Last Name</span>
+        </mat-error>
+      </mat-form-field>
+    <br>
+      <mat-form-field class="example-full-width">
+        <input matInput placeholder="Email" formControlName="email"                         
+               [errorStateMatcher]="matcher" required>
+        <mat-error>
+          <span *ngIf="!bookForm.get('email').valid && bookForm.get('email').touched">Please enter Email</span>
+        </mat-error>
+      </mat-form-field>
+    &nbsp; &nbsp;   &nbsp;  
+      <mat-form-field class="example-full-width">
+        <input matInput placeholder="Work" formControlName="work"
+               [errorStateMatcher]="matcher" required >
+        <mat-error>
+          <span *ngIf="!bookForm.get('work').valid && bookForm.get('work').touched">Please enter Work</span>
+        </mat-error>
+      </mat-form-field>
+      <br>
+      <mat-form-field class="example-full-width">
+        <input matInput placeholder="Street" formControlName="street"
+               [errorStateMatcher]="matcher" required >
+        <mat-error>
+          <span *ngIf="!bookForm.get('street').valid && bookForm.get('street').touched">Please enter Street</span>
+        </mat-error>
+      </mat-form-field> 
+      &nbsp; &nbsp;   &nbsp;  
+
+      <mat-form-field class="example-full-width">
+        <input matInput placeholder="City" formControlName="city"
+               [errorStateMatcher]="matcher" required>
+        <mat-error>
+          <span *ngIf="!bookForm.get('city').valid && bookForm.get('city').touched">Please enter City</span>
+        </mat-error>
+      </mat-form-field><br>
+      <mat-form-field class="example-full-width">
+        <input matInput placeholder="State" formControlName="state"
+               [errorStateMatcher]="matcher" required>
+        <mat-error>
+          <span *ngIf="!bookForm.get('state').valid && bookForm.get('state').touched">Please enter State</span>
+        </mat-error>
+      </mat-form-field>
+       &nbsp; &nbsp;    &nbsp;  
+
+      <mat-form-field class="example-full-width">
+        <input matInput placeholder="zip" formControlName="zip"
+               [errorStateMatcher]="matcher" required>
+        <mat-error>
+          <span *ngIf="!bookForm.get('zip').valid && bookForm.get('zip').touched">Please enter Zip</span>
+        </mat-error>
+      </mat-form-field>
+  
+      
+  <br>
+      <div class="button-row">
+        <button type="submit" style="margin-left: 90%" [disabled]="!bookForm.valid" mat-raised-button color="primary"><mat-icon>save</mat-icon></button>
+     
+    </div>
+    </form>
+  </div>
+    </div>
+  </mat-card>  
+  <app-form-footer></app-form-footer>
+
+
+
+
+
+<!-- <button mat-icon-button color="accent" matTooltip="Edit a {{getFullName(contact)}}">
+  <mat-icon (click)="editEmployee(contact._id)" aria-label="edit contact">edit</mat-icon>
+</button>
+<button mat-icon-button color="warn" mat-button (click)="openDialog()" matTooltip="Delete a {{getFullName(contact)}}">
+  <mat-icon (click)="deleteContact(contact._id)" aria-label="delete contact">delete</mat-icon>
+</button> -->
