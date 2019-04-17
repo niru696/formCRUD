@@ -1,0 +1,35 @@
+
+
+<div class="bg">
+<div class="container">
+
+  <div class="row">
+    <div class="col-md-6">
+      <mat-card class=" mat-elevation-z8" style="margin-left: 30%; margin-top: 5%">
+      <h1>Sign Up</h1>
+    </mat-card><br> 
+    <mat-card class=" mat-elevation-z8" style="margin-left: 30%; margin-bottom: 20%">
+      <p class="lead">Already a member? Please <a routerLink="/login">log in</a> instead.</p>
+      <form (submit)="register()">
+        <mat-form-field class="full-width">
+          <mat-label>First Name</mat-label>
+          <input  matInput  placeholder="Full Name"  name="name" [(ngModel)]="credentials.name" required>
+       </mat-form-field>
+       <mat-form-field class="full-width">
+        <mat-label>Email</mat-label>
+        <input  matInput  placeholder="Email"  name="email" [(ngModel)]="credentials.email" required>
+     </mat-form-field>
+     <mat-form-field class="full-width">
+      <mat-label>Password</mat-label>
+      <input  matInput  placeholder="Password"  name="password" [(ngModel)]="credentials.password" required>
+   </mat-form-field><br>
+        <button type="submit" class="btn btn-primary">Register!</button>
+      </form>
+    </mat-card>
+    </div>
+  </div>
+
+</div>
+</div>
+
+

@@ -1,0 +1,201 @@
+
+
+
+
+  
+<div style="padding:7%">
+<mat-card class=" mat-elevation-z8" style=" background-color:honeydew">
+<!-- <button mat-raised-button (click)="isLinear = !isLinear" id="toggle-linear">
+  {{!isLinear ? 'Enable linear mode' : 'Disable linear mode'}}
+</button> -->
+<!-- <toggle-button (changed)=" isLinear= !isLinear">
+  </toggle-button> -->
+<mat-horizontal-stepper [linear]="isLinear" #stepper style="background-color:honeydew">
+    
+  <mat-step [stepControl]="firstFormGroup" >
+    <form [formGroup]="firstFormGroup"  (ngSubmit)="onFormSubmit(firstFormGroup.value)">
+      <ng-template matStepLabel>Fill out your personal detail</ng-template>
+      <mat-form-field>
+        <input matInput placeholder="First name" formControlName="firstname" [errorStateMatcher]="matcher"  required>{{toUppercase | titlecase}}
+
+        <mat-error>
+            <span *ngIf="!firstFormGroup.get('firstname').valid && firstFormGroup.get('firstname').touched">Please enter First Name</span>
+          </mat-error>
+      </mat-form-field><br> 
+      <mat-form-field>
+        <input matInput placeholder="last name" formControlName="lastname" [errorStateMatcher]="matcher"   required>
+        <mat-error>
+            <span *ngIf="!firstFormGroup.get('lastname').valid && firstFormGroup.get('lastname').touched">Please enter last name</span>
+          </mat-error>
+      </mat-form-field><br> 
+      <mat-form-field>
+        <input matInput placeholder="Email" formControlName="email" [errorStateMatcher]="matcher"  required>
+        <mat-error>
+            <span *ngIf="!firstFormGroup.get('email').valid && firstFormGroup.get('email').touched">Please enter Email</span>
+          </mat-error>
+      </mat-form-field><br> 
+      <div>
+        <button class="btn-success" mat-button matStepperNext>Next</button>
+      </div>
+    </form>
+  </mat-step>
+
+
+  <mat-step [stepControl]="secondFormGroup">
+    <form [formGroup]="secondFormGroup"  (ngSubmit)="onFormSubmit(secondFormGroup.value)">
+      <ng-template matStepLabel>Fill Work details</ng-template>
+      <mat-form-field>
+          
+        <input matInput placeholder="Work" formControlName="work" required><br>
+      </mat-form-field>
+        <!-- <mat-radio-group class="example-radio-group" formControlName="work">
+      <mat-radio-button class="example-radio-button" value="design">Design</mat-radio-button>
+      <mat-radio-button class="example-radio-button" value="code">Code</mat-radio-button>
+      <mat-radio-button class="example-radio-button" value="deploy">Deploy</mat-radio-button>
+  </mat-radio-group> -->
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button class="btn-success" mat-button matStepperNext>Next</button>
+      </div>
+    </form>
+  </mat-step>
+
+  <mat-step [stepControl]="thirdFormGroup">
+    <form [formGroup]="thirdFormGroup" (ngSubmit)="onFormSubmit(thirdFormGroup.value)">
+      <ng-template matStepLabel>Fill out your address</ng-template>
+      <mat-form-field>
+        <input matInput placeholder="Street" formControlName="street" [errorStateMatcher]="matcher"   required>
+        <mat-error>
+            <span *ngIf="!thirdFormGroup.get('street').valid && thirdFormGroup.get('street').touched">Please enter Street</span>
+          </mat-error>
+      </mat-form-field><br>
+      <mat-form-field>
+        <input matInput placeholder="City" formControlName="city" [errorStateMatcher]="matcher"   required>
+        <mat-error>
+            <span *ngIf="!thirdFormGroup.get('city').valid && thirdFormGroup.get('city').touched">Please enter City</span>
+          </mat-error>
+      </mat-form-field><br>
+    <mat-form-field>
+        <input matInput placeholder="State" formControlName="state" [errorStateMatcher]="matcher"   required>
+        <mat-error>
+            <span *ngIf="!thirdFormGroup.get('state').valid && thirdFormGroup.get('state').touched">Please enter State</span>
+          </mat-error>
+      </mat-form-field><br>
+    <mat-form-field>
+        <input matInput placeholder="Zip" formControlName="zip" [errorStateMatcher]="matcher"   required>
+        <mat-error>
+            <span *ngIf="!thirdFormGroup.get('zip').valid && thirdFormGroup.get('zip').touched">Please enter Zip</span>
+          </mat-error>
+      </mat-form-field><br>
+     
+      <div>
+        <button  mat-button matStepperPrevious>Back</button>
+        <button class="btn-success" mat-button matStepperNext>Next</button>
+      </div>
+    </form>
+  </mat-step>
+   
+      <mat-step>
+            <ng-template matStepLabel>Review</ng-template>
+            <form >
+              <!-- <h1>Name</h1><br>
+              <h2>{{firstFormGroup.firstname}}</h2><br>
+              <h1>Email</h1><br>
+              <h2>{{firstFormGroup.email}}</h2> -->
+            </form>
+            <div class="top-15">
+                <button  mat-raised-button matStepperPrevious>Previous</button>&nbsp;
+                <button  class="btn-success" mat-raised-button (click)="onFormSubmit()" (click)="changePath()" cdkFocusInitial >Save</button>
+            </div>
+        </mat-step>
+</mat-horizontal-stepper> 
+
+</mat-card>
+</div>
+
+<!-- <toggle-button (changed)="checked=$event">
+  </toggle-button>
+<p>The state is {{checked ? 'ON' : 'OFF'}}.</p> -->
+
+
+
+
+
+<!-- 
+
+<mat-card>
+<div class="container">
+  <div class="button-row">
+    <a mat-raised-button color="primary" [routerLink]="['/details']"><mat-icon>list</mat-icon></a>
+  </div>
+  <form [formGroup]="bookForm" (ngSubmit)="onFormSubmit(bookForm.value)">
+    <mat-form-field class="example-full-width">
+      <input matInput placeholder="First Name" formControlName="firstname"
+             [errorStateMatcher]="matcher">
+      <mat-error>
+        <span *ngIf="!bookForm.get('firstname').valid && bookForm.get('firstname').touched">Please enter First Name</span>
+      </mat-error>
+    </mat-form-field>
+<br>
+    <mat-form-field class="example-full-width">
+      <input matInput placeholder="Last Name" formControlName="lastname"
+             [errorStateMatcher]="matcher">
+      <mat-error>
+        <span *ngIf="!bookForm.get('lastname').valid && bookForm.get('lastname').touched">Please enter Last Name</span>
+      </mat-error>
+    </mat-form-field>
+  <br>
+    <mat-form-field class="example-full-width">
+      <input matInput placeholder="Email" formControlName="email"
+             [errorStateMatcher]="matcher">
+      <mat-error>
+        <span *ngIf="!bookForm.get('email').valid && bookForm.get('email').touched">Please enter Email</span>
+      </mat-error>
+    </mat-form-field>
+  <br>
+    <mat-form-field class="example-full-width">
+      <input matInput placeholder="Work" formControlName="work"
+             [errorStateMatcher]="matcher">
+      <mat-error>
+        <span *ngIf="!bookForm.get('work').valid && bookForm.get('work').touched">Please enter Work</span>
+      </mat-error>
+    </mat-form-field>
+
+<br>
+    <mat-form-field class="example-full-width">
+      <input matInput placeholder="Street" formControlName="street"
+             [errorStateMatcher]="matcher">
+      <mat-error>
+        <span *ngIf="!bookForm.get('street').valid && bookForm.get('street').touched">Please enter Street</span>
+      </mat-error>
+    </mat-form-field><br>
+    <mat-form-field class="example-full-width">
+      <input matInput placeholder="City" formControlName="city"
+             [errorStateMatcher]="matcher">
+      <mat-error>
+        <span *ngIf="!bookForm.get('city').valid && bookForm.get('city').touched">Please enter City</span>
+      </mat-error>
+    </mat-form-field><br>
+    <mat-form-field class="example-full-width">
+      <textarea matInput placeholder="State" formControlName="state"
+             [errorStateMatcher]="matcher"></textarea>
+      <mat-error>
+        <span *ngIf="!bookForm.get('state').valid && bookForm.get('state').touched">Please enter State</span>
+      </mat-error>
+    </mat-form-field><br>
+    <mat-form-field class="example-full-width">
+      <input matInput placeholder="zip" formControlName="zip"
+             [errorStateMatcher]="matcher">
+      <mat-error>
+        <span *ngIf="!bookForm.get('zip').valid && bookForm.get('zip').touched">Please enter Zip</span>
+      </mat-error>
+    </mat-form-field>
+
+    
+<br>
+    <div class="button-row">
+      <button type="submit" [disabled]="!bookForm.valid" mat-raised-button color="primary"><mat-icon>save</mat-icon></button>
+    </div>
+  </form>
+  </div>
+</mat-card>  -->

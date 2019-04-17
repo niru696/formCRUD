@@ -1,0 +1,26 @@
+
+
+<div style="padding:15%">
+
+<mat-card >
+    <form [formGroup]="angForm" novalidate>
+      <div class="form-group">
+        <label class="col-md-4">Client Name</label>
+        <input type="text" class="form-control" formControlName="client_name" #client_name />
+      </div>
+      <div *ngIf="angForm.controls['client_name'].invalid && (angForm.controls['client_name'].dirty || angForm.controls['client_name'].touched)" class="alert alert-danger">
+        <div *ngIf="angForm.controls['client_name'].errors.required">
+          Client Name is required.
+        </div>
+      </div>
+
+       
+      <div class="form-group">
+        <button type="submit" 
+        [disabled]="angForm.pristine || angForm.invalid"  (click)="addOffice(client_name.value)"
+        class="btn btn-primary">Add  Client</button>
+      </div>
+    </form>
+  
+  </mat-card>
+</div>
